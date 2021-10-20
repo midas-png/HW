@@ -1,21 +1,14 @@
 package homw9;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 public class Homw9 {
 
     public static void main(String[] args) {
-        int[] array = {2, 2};
-        int[][] array2 = {{2, 1, 3}, {12, 5, -1}, {2, 65, 7}};
-        
-        System.out.print(maxMinor(array2));
-//        for(int i=0; i<array.length; i++){
-//            System.out.print(reverseLast(array)[i]);
-//        }
+//         int[] array = {2, 2};
+//         int[][] array2 = {{2, 1, 3}, {12, 5, -1}, {2, 65, 7}};
+//         System.out.println(count11("121212121212"));
     }
     
     public static String getStatus(int tempature){ //№1
@@ -127,6 +120,7 @@ public class Homw9 {
         return maxElem - minElem;
     }
     
+    
     public static boolean isStepSimilar(int[] arr){ //№15
         int[] newArray = arr.clone();
         Arrays.sort(newArray);
@@ -152,29 +146,52 @@ public class Homw9 {
         return newArray;
     }
     
-    public static int maxMinor(int[][] arr){ //Только 3х3 №17
+    public static int maxMinor(int[][] arr){ // №17 неправильный результат
         int maxNum = 0;
         int indexI = 0;
         int indexJ = 0;
-        int[][] newMatrix = arr.clone();
+        int[][] matrix = arr.clone();
+        int[][] minor = new int[matrix.length - 1][matrix.length - 1];
         
-        
-        for(int i=0; i<arr.length; i++)
-            for(int j=0; j<arr.length; j++){
+        for(int i=0; i<matrix.length; i++)
+            for(int j=0; j<matrix.length; j++){
                 if(arr[i][j] > maxNum)
-                    maxNum = arr[i][j];
+                    maxNum = matrix[i][j];
                     indexI = i;
                     indexJ = j;
             }
         
-        
+        for(int i=0; i<matrix.length; i++)
+            for(int j=0; i!=indexI && j < matrix[i].length; i++)
+                if(j != indexJ)
+                    return minor[i<indexI ? i:i-1][j<indexJ ? j : j -1] = matrix[i][j];
         
         return 0;
     }
     
-    public static int count11(String value){ // №18
-        int count = 0;
+    public static int count11(String value){ // №18 неправильный результат
+        char[] chars = value.toCharArray();
         
-        return count;
+        Arrays.sort(chars);
+        String sorted = new String(chars);
+        
+        int i = sorted.lastIndexOf("1") + 1;
+        
+        if(i % 2 != 0)
+            return (i - 1) / 2;
+        
+        return i / 2;
+        
     }
 }
+
+
+/* №19
+1. Входящее значение строки. Нужно первый и последний символ поменять местами,
+при этом, чтобы первый символ всегда был в верхнем регистре, последующие - в нижнем регистре.
+"Cat" -> "taC"
+"CaSTle" -> "EastlC"
+"jEY" -> "Yej"
+2. Конвертер температур
+3. Игра "Камень-ножницы-бумага"
+*/
