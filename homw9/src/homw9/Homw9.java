@@ -1,22 +1,22 @@
 package homw9;
 
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Homw9 {
 
     public static void main(String[] args) {
-//         int[] array = {2, 2};
-//         int[][] array2 = {{2, 1, 3}, {12, 5, -1}, {2, 65, 7}};
-//         System.out.println(count11("121212121212"));
+        
     }
     
     public static String getStatus(int tempature){ //№1
-        if(tempature <= 0){
+        if(tempature <= 0)
             return "Лед";
-        } else if (tempature >= 100){
+        else if (tempature >= 100)
             return "Пар";
-        }
+        
         return "Вода";
     }
     
@@ -169,29 +169,32 @@ public class Homw9 {
         return 0;
     }
     
-    public static int count11(String value){ // №18 неправильный результат
-        char[] chars = value.toCharArray();
+    public static int count11(String value){ // №18 
+        String regex = "11";
+        int count = 0;
         
-        Arrays.sort(chars);
-        String sorted = new String(chars);
+        Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+        Matcher matcher = pattern.matcher(value);
         
-        int i = sorted.lastIndexOf("1") + 1;
-        
-        if(i % 2 != 0)
-            return (i - 1) / 2;
-        
-        return i / 2;
-        
+        while (matcher.find()) {
+            count++;
+            
+        }
+        return count;
     }
 }
 
 
 /* №19
+
 1. Входящее значение строки. Нужно первый и последний символ поменять местами,
 при этом, чтобы первый символ всегда был в верхнем регистре, последующие - в нижнем регистре.
 "Cat" -> "taC"
 "CaSTle" -> "EastlC"
 "jEY" -> "Yej"
+
 2. Конвертер температур
+
 3. Игра "Камень-ножницы-бумага"
+
 */
