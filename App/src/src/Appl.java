@@ -23,16 +23,25 @@ public class Appl {
         System.out.println("__________________________");
         m.mulitplyMatrixSecond(matrix);
 ____________________Задача 3_______________________
-
+          String[] matrix = {"a", "b"};
+          HubList<String> youList = new HubList<String>(matrix);
+          youList.add("d");
+          youList.removeAt(0);
+          System.out.println(youList.find("b"));
+          youList.sort();
 ____________________Задача 4_______________________
 
+
+          Auth a = new Auth("+71234567890", "njanskda@gmail.com","");
+          a.fillLogin();
+          a.fillLogin();
+          System.out.println(a.checkCode());
+          System.out.println(a.sendCode());
+          System.out.println(a.sendCode());
+          System.out.println(a.checkCode());
+
+____________________Задача 5_______________________
 */
-        String[] matrix = {"a", "b"};
-        HubList<String> youList = new HubList<String>(matrix);
-        youList.add("d");
-        youList.removeAt(0);
-        System.out.println(youList.find("b"));
-        youList.sort();
 
     }
 }
